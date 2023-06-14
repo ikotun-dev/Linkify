@@ -10,9 +10,9 @@ class UrlShortener(APIView):
         long_url = request.data['url']
         if long_url : 
             shortener = pyshorteners.Shortener()
-            shortened_url = shortener.tinyurl.short(url)
+            shortened_url = shortener.tinyurl.short(long_url)
             return Response({'short_url' : shortened_url}, status=status.HTTP_200_OK)
         else :
             return Response({'error': 'Missing long_url parameter'}, status=status.HTTP_401_UNAUTHORIZED)
-            
+
 
